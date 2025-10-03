@@ -1,9 +1,5 @@
 pipeline {
     agent any
-    tools {
-        // Optional: if you configured NodeJS in Jenkins via NodeJS plugin, replace 'NodeJS-18' with your tool name
-        nodejs 'NodeJS-18'
-    }
     stages {
         stage('Checkout') {
             steps {
@@ -19,7 +15,6 @@ pipeline {
 
         stage('Run Tests') {
             steps {
-                // Run tests, output to test.log, do not fail the pipeline if tests fail
                 bat 'npm test > test.log 2>&1 || exit 0'
                 archiveArtifacts artifacts: 'test.log', allowEmptyArchive: true
             }
@@ -46,5 +41,3 @@ pipeline {
             echo "Build finished: ${currentBuild.currentResult}"
         }
     }
-}
-
