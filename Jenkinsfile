@@ -1,5 +1,6 @@
 pipeline {
     agent any
+
     stages {
         stage('Checkout') {
             steps {
@@ -41,3 +42,4 @@ pipeline {
             echo "Build finished: ${currentBuild.currentResult}"
         }
     }
+}
